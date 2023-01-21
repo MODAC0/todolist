@@ -9,33 +9,34 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
     padding: 0;
     margin: 0;
-    letter-spacing: -0.02rem;
+    letter-spacing: -0.02;
 }
 html {
     background-color: #f0f0f0;
+    width: 100%;
 }
 body {
+  padding: 1.5vw 1.25vw 0 1.25vw;
     background-color: #ffffff;
     font-family: 'Pretendard';
     overflow: hidden; 
     left: 0; 
     top: 0; 
-    width: 23.44em;
-    height: 48em;
-    margin: 4rem auto;
-    border-radius: 1rem;
+    width: 20vw;
+    height: 42vw;
+    margin: 5vw auto;
+    border-radius: 0.8333vw;
 }
 `;
 
 // todo: tagStyle
 export const TagsList = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   flex-wrap: wrap;
-  width: 100%;
-  padding: 0 1.5em 0.88em 1.25em;
   > .title {
-    margin-top: 2.5em;
+    margin-top: 2.5vw;
   }
   > ul {
     display: flex;
@@ -43,13 +44,13 @@ export const TagsList = styled.div`
     margin: 1rem 0 0 0;
     > .tag {
       width: auto;
-      height: 2rem;
+      height: 1.25vw;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.88rem;
+      font-size: 0.73vw;
       color: #bdd0d9;
-      padding: 0 0.5rem;
+      padding: 0 0.61vw;
       border: 1px solid #d8e5ea;
       border-radius: 2em;
       margin-right: 0.63em;
@@ -61,11 +62,10 @@ export const TagsList = styled.div`
       }
       > .tag-close-icon {
         display: block;
-        width: 16px;
-        height: 16px;
-        line-height: 16px;
+        width: 0.6vw;
+        height: 1vw;
         text-align: center;
-        margin-left: 8px;
+        margin-left: 0.6vw;
         color: #bdd0d9;
         border-radius: 50%;
         background: #fff;
@@ -82,12 +82,11 @@ export const TagsList = styled.div`
     }
   }
   > input {
-    flex: 1;
     border: none;
     width: 100%;
+    height: 40px;
     color: #666666;
     background-color: #f9fafb;
-    height: 46px;
     padding-left: 1.2em;
     margin-top: 0.88rem;
     border-radius: 30em;
@@ -103,29 +102,27 @@ export const HeaderContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 2.5em 1.5em 1.25em 1.25em;
 `;
 export const Title1 = styled.h1`
   font-style: normal;
   font-weight: 800;
-  font-size: 32px;
-  line-height: 32px;
-  letter-spacing: -1px;
-  color: #3f778c; ;
+  font-size: 1.6667vw;
+  line-height: 1.6667vw;
+  color: #3f778c;
 `;
 export const SubText = styled.p`
   font-style: normal;
   font-weight: 400;
-  line-height: 1.5em;
+  line-height: 0.0781vw;
   color: #b1b1b1;
-  font-size: 1em;
-  padding: 0 1.25em 0 1.25em;
+  font-size: 0.8333vw;
+  margin-top: 1vw;
 `;
 export const PlusLink = styled(Link)``;
 
 //작업 추가 버튼 구현
 export const BtnImg = styled.img`
-  width: 30px;
+  width: 1.5625vw;
   cursor: pointer;
   &.removeBtn {
     display: none;
@@ -152,7 +149,7 @@ export const TodoHeader = styled.div`
 `;
 
 export const ListTitle = styled.h3`
-  font-size: 1.25rem;
+  font-size: 1.0417vw;
   font-weight: 500;
 `;
 
@@ -168,7 +165,7 @@ export const ListUl = styled.ul`
 //todo: TodoStyle
 
 export const Radio = styled.input`
-  margin-right: 0.5rem;
+  margin-right: 0.5%;
 `;
 export const TodoLi = styled.li`
   display: flex;

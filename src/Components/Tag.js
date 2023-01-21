@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { TagsList, ListTitle } from "../Style";
 
 export const TagList = ({ tags, setTags, tagState }) => {
+  const location = useLocation().pathname;
   console.log(useLocation().pathname);
   const [isOn, setIsOn] = useState(false);
 
@@ -39,16 +40,12 @@ export const TagList = ({ tags, setTags, tagState }) => {
               key={index}
               className={`tag ${isOn ? "one-tag" : ""}`}
             >
-              <span
-                className={`tag-title ${
-                  useLocation().pathname === "/add" ? null : "closebtn-delete"
-                }`}
-              >
-                {tag}
-              </span>
+              <span className={`tag-title`}>{tag}</span>
               <span
                 onClick={() => removeTags(index)}
-                className="tag-close-icon"
+                className={`tag-close-icon ${
+                  location === "/add" ? null : "closebtn-delete"
+                }`}
               >
                 X
               </span>

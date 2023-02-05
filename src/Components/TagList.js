@@ -2,19 +2,18 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { TagsList, ListTitle } from "../Style";
-
-export const TagList = ({ tags, setTags, tagState }) => {
+export const TagList = ({ tags, setTags }) => {
   const location = useLocation().pathname;
-  console.log(useLocation().pathname);
-  const [isOn, setIsOn] = useState(false);
+  const [isOn, setIsOn] = useState("");
 
   const handleTag = (e) => {
-    console.log(e);
-    setIsOn(!isOn);
+    setIsOn(() => {
+      return tags.indexOf(e.target.textContent);
+    });
   };
 
   const removeTags = (indexToRemove) => {
-    setTags(tags.filter((element, index) => index !== indexToRemove));
+    setTags(tags.filter((_, index) => index !== indexToRemove));
   };
 
   const addTags = (event) => {
@@ -24,7 +23,6 @@ export const TagList = ({ tags, setTags, tagState }) => {
       !tags.includes(event.target.value)
     ) {
       setTags([...tags, event.target.value]);
-      console.log(event.target.value);
       event.target.value = "";
     }
   };
@@ -33,27 +31,26 @@ export const TagList = ({ tags, setTags, tagState }) => {
     <>
       <TagsList>
         <ListTitle className="title">태그</ListTitle>
-        <ul id="tags">
+        <ul>
           {tags.map((tag, index) => (
             <li
-              onClick={(e) => handleTag(e)}
               key={index}
-              className={`tag ${isOn ? "one-tag" : ""}`}
+              onClick={(e) => handleTag(e)}
+              className={`${index === isOn ? "one-tag" : "tag"}`}
             >
-              <span className={`tag-title`}>{tag}</span>
-              <span
+              {tag}
+              <img
+                src="img/tag_close_btn.svg"
                 onClick={() => removeTags(index)}
                 className={`tag-close-icon ${
                   location === "/add" ? null : "closebtn-delete"
                 }`}
-              >
-                X
-              </span>
+              />
             </li>
           ))}
         </ul>
         <input
-          className="tag-input"
+          className={location === "/add" ? null : "input-delete"}
           type="text"
           onKeyUp={(e) => {
             addTags(e);

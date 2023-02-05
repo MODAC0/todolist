@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { TodoLists } from "./Pages/TodoLists";
+import { MainPage } from "./Pages/MainPage";
 import { GlobalStyle } from "./Style";
 import { Route, Routes } from "react-router-dom";
 import { AddPage } from "./Pages/AddPage";
+import data from "./data.json";
 
 function App() {
-  const initialTags = ["모두", "공부", "운동", "개인적인"];
+  const initialTags = data.data.map((el) => el.cate);
+  const initialTodo = data.data.map((el) => el.todo);
   const [tags, setTags] = useState(initialTags);
-
-  console.log(tags);
-
+  const [todo, setTodo] = useState(initialTodo);
   return (
     <>
       <GlobalStyle />
@@ -18,11 +18,13 @@ function App() {
           <Route
             exact
             path="/"
-            element={<TodoLists tags={tags} setTags={setTags} />}
+            element={<MainPage tags={tags} todo={todo} />}
           ></Route>
           <Route
             path="/add"
-            element={<AddPage tags={tags} setTags={setTags} />}
+            element={
+              <AddPage tags={tags} setTags={setTags} setTodo={setTodo} />
+            }
           ></Route>
         </Routes>
       </div>

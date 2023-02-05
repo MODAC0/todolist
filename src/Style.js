@@ -24,7 +24,7 @@ body {
     top: 0; 
     width: 20vw;
     height: 42vw;
-    margin: 5vw auto;
+    margin: 6vh auto;
     border-radius: 0.8333vw;
 }
 `;
@@ -41,7 +41,7 @@ export const TagsList = styled.div`
   > ul {
     display: flex;
     flex-wrap: wrap;
-    margin: 1rem 0 0 0;
+    margin: 0.8vw 0 0 0;
     > .tag {
       width: auto;
       height: 1.25vw;
@@ -50,48 +50,66 @@ export const TagsList = styled.div`
       justify-content: center;
       font-size: 0.73vw;
       color: #bdd0d9;
-      padding: 0 0.61vw;
+      padding: 0 0.4vw;
       border: 1px solid #d8e5ea;
-      border-radius: 2em;
-      margin-right: 0.63em;
-      margin-bottom: 0.63em;
+      border-radius: 2vw;
+      margin-right: 0.4vw;
+      margin-bottom: 0.4vw;
       cursor: pointer;
-      :active {
-        background-color: #e3f6fd;
-        color: #3f778c;
-      }
       > .tag-close-icon {
-        display: block;
-        width: 0.6vw;
-        height: 1vw;
-        text-align: center;
-        margin-left: 0.6vw;
-        color: #bdd0d9;
-        border-radius: 50%;
-        background: #fff;
         cursor: pointer;
-        & .closebtn-delete {
+        width: 0.5vw;
+        margin-left: 0.2vw;
+        &.closebtn-delete {
           display: none;
         }
       }
-      > :active {
-        background-color: #e3f6fd;
-        border: none;
-        color: #3f778c;
+    }
+    > .one-tag {
+      width: auto;
+      height: 1.25vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.73vw;
+      padding: 0 0.4vw;
+      border: 1px solid #d8e5ea;
+      border-radius: 2vw;
+      margin-right: 0.4vw;
+      margin-bottom: 0.4vw;
+      font-weight: 600;
+      background-color: #e3f6fd;
+      color: #3f778c;
+      border: 1px solid #e3f6fd;
+      cursor: pointer;
+      > .tag-close-icon {
+        cursor: pointer;
+        width: 0.5vw;
+        margin-left: 0.2vw;
+        &.closebtn-delete {
+          display: none;
+        }
       }
     }
   }
   > input {
     border: none;
     width: 100%;
-    height: 40px;
+    padding: 1vw 0vw 1vw 1vw;
     color: #666666;
     background-color: #f9fafb;
-    padding-left: 1.2em;
-    margin-top: 0.88rem;
-    border-radius: 30em;
+    margin-top: 0.72vw;
+    border-radius: 0.6vw;
+    font-size: 0.8vw;
+    :focus {
+      outline: none;
+    }
     ::placeholder {
       color: #ced7e0;
+      font-size: 0.8vw;
+    }
+    &.input-delete {
+      display: none;
     }
   }
 `;
@@ -129,31 +147,34 @@ export const BtnImg = styled.img`
   }
 `;
 
-// todo: TodoListStyle
+// todo: MainPageStyle
 
 export const TodoListSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 1.25rem;
-  padding: 1.25rem;
+  margin-top: 1vw;
+  padding: 1vw;
   background: #e3f8ff;
-  border-radius: 1rem;
+  border-radius: 0.6vw;
 `;
 
 export const TodoHeader = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0.5em 0;
+  padding-top: 0.4vw;
+  padding-bottom: 1vw;
 `;
 
 export const ListTitle = styled.h3`
-  font-size: 1.0417vw;
+  font-size: 1vw;
   font-weight: 500;
 `;
 
-export const OtherBtn = styled.img``;
+export const OtherBtn = styled.img`
+  height: 1vw;
+`;
 
 export const ListUl = styled.ul`
   display: flex;
@@ -162,18 +183,18 @@ export const ListUl = styled.ul`
   width: 100%;
 `;
 
-//todo: TodoStyle
+//todo: TodoListStyle
 
-export const Radio = styled.input`
-  margin-right: 0.5%;
-`;
 export const TodoLi = styled.li`
   display: flex;
   width: 100%;
-  padding: 0.5em 0;
+`;
+export const Radio = styled.input`
+  margin-right: 0.5vw;
 `;
 export const TodoText = styled.p`
   width: 88%;
+  font-size: 0.8vw;
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 400;
@@ -182,5 +203,28 @@ export const TodoText = styled.p`
 `;
 export const DeleteBtn = styled.img`
   cursor: pointer;
+  width: 1vw;
   margin-left: 0.5rem;
+`;
+export const TodoInput = styled.div`
+  > h3 {
+    margin-top: 2.5vw;
+  }
+  > input {
+    border: none;
+    width: 100%;
+    color: #666666;
+    background-color: #f9fafb;
+    padding: 1vw 0vw 6vw 1vw;
+    margin-top: 0.72vw;
+    border-radius: 0.6vw;
+    font-size: 0.8vw;
+    :focus {
+      outline: none;
+    }
+    ::placeholder {
+      color: #ced7e0;
+      font-size: 0.8vw;
+    }
+  }
 `;

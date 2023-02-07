@@ -12,43 +12,43 @@ import {
   TodoInput,
 } from "../Style";
 
-export const Todo = ({ text }) => {
-  const handleCreate = () => {};
+export const Todo = ({ cate, list }) => {
+  console.log(cate);
   const handleUpdate = (id) => {};
   const handleRemove = (index) => {};
-  console.log(text);
   return (
     <Fragment>
-      <TodoLi>
-        <Radio type={"radio"} />
-        <TodoText>adsfasdf</TodoText>
-        <DeleteBtn
-          src="img/close_btn.svg"
-          alt="닫기 버튼"
-          onClick={(e) => handleRemove(e)}
-        ></DeleteBtn>
-      </TodoLi>
+      {list.map((data, i) => {
+        if (data.cate === cate)
+          return (
+            <TodoLi key={i}>
+              <Radio type={"radio"} />
+              <TodoText>{data.todo}</TodoText>
+              <DeleteBtn
+                src="img/close_btn.svg"
+                alt="닫기 버튼"
+                onClick={(e) => handleRemove(e)}
+              ></DeleteBtn>
+            </TodoLi>
+          );
+      })}
     </Fragment>
   );
 };
 
 export const TodoList = ({ tags, todo }) => {
+  console.log(todo);
+  console.log(tags);
   return (
     <Fragment>
-      {tags.map((e, i) => (
-        <TodoListSection>
+      {tags.map((cate, i) => (
+        <TodoListSection key={i}>
           <TodoHeader>
-            <ListTitle>{e}</ListTitle>
+            <ListTitle>{cate}</ListTitle>
             <OtherBtn src="img/Other_btn.svg" />
           </TodoHeader>
           <ListUl>
-            {todo.map((text) => {
-              todo.indexOf(text) === i ? (
-                <Todo key={i} text={text} />
-              ) : (
-                <Todo key={i} text={text}></Todo>
-              );
-            })}
+            <Todo cate={cate} list={todo} />
           </ListUl>
         </TodoListSection>
       ))}
@@ -57,10 +57,18 @@ export const TodoList = ({ tags, todo }) => {
 };
 
 export const TodoHandller = () => {
+  const createTodo = (e) => {
+    if (e.key === "Enter" && e.target.value !== "") {
+    }
+  };
   return (
     <TodoInput>
       <ListTitle>작업 추가하기</ListTitle>
-      <input type="text" placeholder="추가하실 내용을 입력해 주세요." />
+      <input
+        onKeyUp={(e) => createTodo(e)}
+        type="text"
+        placeholder="추가하실 내용을 입력해 주세요."
+      />
     </TodoInput>
   );
 };

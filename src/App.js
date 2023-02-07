@@ -7,7 +7,7 @@ import data from "./data.json";
 
 function App() {
   const initialTags = data.data.map((el) => el.cate);
-  const initialTodo = data.data.map((el) => el.todo);
+  const initialTodo = data.data;
   const [tags, setTags] = useState(initialTags);
   const [todo, setTodo] = useState(initialTodo);
   return (
@@ -23,7 +23,12 @@ function App() {
           <Route
             path="/add"
             element={
-              <AddPage tags={tags} setTags={setTags} setTodo={setTodo} />
+              <AddPage
+                tags={tags}
+                setTags={setTags}
+                setTodo={setTodo}
+                todo={todo}
+              />
             }
           ></Route>
         </Routes>

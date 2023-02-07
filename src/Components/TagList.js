@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { TagsList, ListTitle } from "../Style";
+
 export const TagList = ({ tags, setTags }) => {
   const location = useLocation().pathname;
   const [isOn, setIsOn] = useState("");

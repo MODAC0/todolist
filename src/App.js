@@ -3,7 +3,7 @@ import { MainPage } from "./Pages/MainPage";
 import { GlobalStyle } from "./Style";
 import { Route, Routes } from "react-router-dom";
 import { AddPage } from "./Pages/AddPage";
-// import data from "./data/data.json";
+import { Splash } from "./Pages/Splash";
 
 function App() {
   const [tags, setTags] = useState();
@@ -28,10 +28,19 @@ function App() {
       {ispending || (
         <div className="App">
           <Routes>
+            <Route path="/" element={<Splash />} />
             <Route
-              exact
-              path="/"
-              element={<MainPage tags={tags} todo={todo} />}
+              path="/main"
+              element={
+                <MainPage
+                  tags={tags}
+                  todo={todo}
+                  setTags={setTags}
+                  setTodo={setTodo}
+                  isOn={isOn}
+                  setIsOn={setIsOn}
+                />
+              }
             ></Route>
             <Route
               path="/add"

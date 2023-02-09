@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: -0.02;
 }
 html {
-    background-color: #f0f0f0;
+    background-color: #F4F7FE;
     width: 100%;
 }
 body {
@@ -24,8 +24,10 @@ body {
     top: 0; 
     width: 20vw;
     height: 42vw;
-    margin: 6vh auto;
+    margin: 10vh auto;
     border-radius: 0.8333vw;
+    -webkit-box-shadow: 0px 0px 25px -3px rgba(28,138,235,0.33); 
+box-shadow: 0px 0px 25px -3px rgba(28,138,235,0.33);
 }
 `;
 
@@ -185,12 +187,24 @@ export const ListUl = styled.ul`
 
 //todo: TodoListStyle
 
+export const NoneImg = styled.img`
+  margin-top: 4vw;
+`;
+export const ImgText = styled.p`
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1vw;
+  color: #b1b1b1;
+  font-size: 0.8333vw;
+`;
 export const TodoLi = styled.li`
   display: flex;
   width: 100%;
 `;
 export const Radio = styled.input`
   margin-right: 0.5vw;
+  border-radius: 10vw;
 `;
 export const TodoText = styled.p`
   width: 88%;
@@ -227,4 +241,22 @@ export const TodoInput = styled.div`
       font-size: 0.8vw;
     }
   }
+`;
+
+//todo: SplashStyle
+export const SplashLayout = styled.div`
+  text-align: center;
+`;
+export const SplashImg = styled.img`
+  width: 100%;
+  margin-bottom: 1vw;
+`;
+export const NextBtn = styled.button`
+  font-size: 0.8vw;
+  border-radius: 10vw;
+  margin-top: 2vw;
+  padding: 0.5vw 1.2vw;
+  color: white;
+  background-color: #57889a;
+  cursor: pointer;
 `;

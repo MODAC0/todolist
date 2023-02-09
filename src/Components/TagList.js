@@ -1,25 +1,26 @@
 //태그기능 구현
-import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { TagsList, ListTitle } from "../Style";
-export const TagList = ({ tags, setTags, isOn, setIsOn }) => {
+export const TagList = ({ tags, setTags, isOn, setIsOn, todo, setTodo }) => {
   const location = useLocation().pathname;
-
   const handleTag = (e) => {
     setIsOn(() => e.target.textContent);
   };
-
   const removeTags = (indexToRemove) => {
-    setTags(tags.filter((_, index) => index !== indexToRemove));
+    const deleteTag = tags.filter((_, index) => index !== indexToRemove);
+    setTags(deleteTag);
+    let deleteData = todo.filter((e) => e.cate !== tags[indexToRemove]);
+    setTodo(deleteData);
   };
 
   const addTags = (event) => {
-    if (
-      event.key === "Enter" &&
-      event.target.value !== "" &&
-      !tags.includes(event.target.value)
-    ) {
-      setTags([...tags, event.target.value]);
+    let value = event.target.value;
+    let data = { id: `${todo.length + 1}` || 1, cate: `${value}`, todo: [] };
+    if (event.key === "Enter" && value !== "" && !tags.includes(value)) {
+      setTags([...tags, value]);
+      if (todo.map((data) => data.cate !== value && data !== undefined)) {
+        todo.push(data);
+      }
       event.target.value = "";
     }
   };
@@ -37,6 +38,7 @@ export const TagList = ({ tags, setTags, isOn, setIsOn }) => {
               {tag}
               <img
                 src="img/tag_close_btn.svg"
+                alt="delete"
                 onClick={() => removeTags(index)}
                 className={`tag-close-icon ${
                   location === "/add" ? null : "closebtn-delete"

@@ -1,38 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MainPage } from "./Pages/MainPage";
 import { GlobalStyle } from "./Style";
 import { Route, Routes } from "react-router-dom";
 import { AddPage } from "./Pages/AddPage";
-import data from "./data.json";
+// import data from "./data/data.json";
 
 function App() {
-  const initialTags = data.data.map((el) => el.cate);
-  const initialTodo = data.data;
-  const [tags, setTags] = useState(initialTags);
-  const [todo, setTodo] = useState(initialTodo);
+  const [tags, setTags] = useState();
+  const [todo, setTodo] = useState();
+  const [isOn, setIsOn] = useState("");
+  const [ispending, setIspending] = useState(true);
+  useEffect(() => {
+    fetch("http://localhost:3001/data/", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setIspending(false);
+        setTags(data.map((el) => el.cate));
+        setTodo(data);
+      });
+  }, []);
+
   return (
     <>
       <GlobalStyle />
-      <div className="App">
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={<MainPage tags={tags} todo={todo} />}
-          ></Route>
-          <Route
-            path="/add"
-            element={
-              <AddPage
-                tags={tags}
-                setTags={setTags}
-                setTodo={setTodo}
-                todo={todo}
-              />
-            }
-          ></Route>
-        </Routes>
-      </div>
+      {ispending || (
+        <div className="App">
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={<MainPage tags={tags} todo={todo} />}
+            ></Route>
+            <Route
+              path="/add"
+              element={
+                <AddPage
+                  tags={tags}
+                  setTags={setTags}
+                  setTodo={setTodo}
+                  todo={todo}
+                  isOn={isOn}
+                  setIsOn={setIsOn}
+                />
+              }
+            ></Route>
+          </Routes>
+        </div>
+      )}
     </>
   );
 }

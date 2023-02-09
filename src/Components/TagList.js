@@ -2,15 +2,11 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { TagsList, ListTitle } from "../Style";
-
-export const TagList = ({ tags, setTags }) => {
+export const TagList = ({ tags, setTags, isOn, setIsOn }) => {
   const location = useLocation().pathname;
-  const [isOn, setIsOn] = useState("");
 
   const handleTag = (e) => {
-    setIsOn(() => {
-      return tags.indexOf(e.target.textContent);
-    });
+    setIsOn(() => e.target.textContent);
   };
 
   const removeTags = (indexToRemove) => {
@@ -27,7 +23,6 @@ export const TagList = ({ tags, setTags }) => {
       event.target.value = "";
     }
   };
-
   return (
     <>
       <TagsList>
@@ -37,7 +32,7 @@ export const TagList = ({ tags, setTags }) => {
             <li
               key={index}
               onClick={(e) => handleTag(e)}
-              className={`${index === isOn ? "one-tag" : "tag"}`}
+              className={`${tag === isOn ? "one-tag" : "tag"}`}
             >
               {tag}
               <img

@@ -9,12 +9,9 @@ import {
   TodoLi,
   TodoText,
   DeleteBtn,
-  TodoInput,
 } from "../Style";
 
 export const Todo = ({ cate, list }) => {
-  console.log(cate);
-  const handleUpdate = (id) => {};
   const handleRemove = (index) => {};
   return (
     <Fragment>
@@ -37,8 +34,6 @@ export const Todo = ({ cate, list }) => {
 };
 
 export const TodoList = ({ tags, todo }) => {
-  console.log(todo);
-  console.log(tags);
   return (
     <Fragment>
       {tags.map((cate, i) => (
@@ -53,22 +48,5 @@ export const TodoList = ({ tags, todo }) => {
         </TodoListSection>
       ))}
     </Fragment>
-  );
-};
-
-export const TodoHandller = () => {
-  const createTodo = (e) => {
-    if (e.key === "Enter" && e.target.value !== "") {
-    }
-  };
-  return (
-    <TodoInput>
-      <ListTitle>작업 추가하기</ListTitle>
-      <input
-        onKeyUp={(e) => createTodo(e)}
-        type="text"
-        placeholder="추가하실 내용을 입력해 주세요."
-      />
-    </TodoInput>
   );
 };

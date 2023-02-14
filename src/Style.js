@@ -189,6 +189,7 @@ export const ListUl = styled.ul`
 
 export const NoneImg = styled.img`
   margin-top: 4vw;
+  width: 100%;
 `;
 export const ImgText = styled.p`
   text-align: center;
